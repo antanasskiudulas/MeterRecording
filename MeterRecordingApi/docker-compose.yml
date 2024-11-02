@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  meterrecordingapi:
+    image: meterrecordingapi:dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .src:/app #TODO: remove this dir mapping after finishing the development
+  postgreDb:
+    image: postgres:13
+    environment:
+        POSTGRES_USER: local
+        POSTGRES_PASSWORD: guess
+        POSTGRES_DB: energy_consumption
+    volumes:
+      - energy-consumption:/var/lib/postgresql/data
+
+volumes:
+    energy-consumption:
+  
