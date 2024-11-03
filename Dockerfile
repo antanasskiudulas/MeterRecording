@@ -15,6 +15,7 @@ COPY ["MeterRecording.sln", "./"]
 # Copy each project file
 COPY ["MeterRecording.Api/MeterRecording.Api.csproj", "MeterRecording.Api/"]
 COPY ["MeterRecording.Core/MeterRecording.Core.csproj", "MeterRecording.Core/"]
+COPY ["MeterRecording.Application/MeterRecording.Application.csproj", "MeterRecording.Application/"]
 COPY ["MeterRecording.Infrastructure/MeterRecording.Infrastructure.csproj", "MeterRecording.Infrastructure/"]
 
 # Restore all dependencies from the solution file
@@ -36,4 +37,6 @@ RUN dotnet publish -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+COPY MeterRecording.Infrastructure/Seed/Accounts/Data/Test_Accounts.csv /app/Seed/Accounts/Data/Test_Accounts.csv
+
 ENTRYPOINT ["dotnet", "MeterRecording.Api.dll"]

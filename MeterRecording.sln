@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterRecording.Api", ".\MeterRecording.Api\MeterRecording.Api.csproj", "{C7D8CB32-447C-4EB3-91EC-8538A6D696CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterRecording.Api", "MeterRecording.Api\MeterRecording.Api.csproj", "{C7D8CB32-447C-4EB3-91EC-8538A6D696CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterRecording.Core", ".\MeterRecording.Core\MeterRecording.Core.csproj", "{13CC6B5D-B68F-455A-BC67-EAE0B68CFB66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterRecording.Core", "MeterRecording.Core\MeterRecording.Core.csproj", "{13CC6B5D-B68F-455A-BC67-EAE0B68CFB66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterRecording.Infrastructure", ".\MeterRecording.Infrastructure\MeterRecording.Infrastructure.csproj", "{DFF498BE-B734-40FE-8485-665A35BB7EE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeterRecording.Infrastructure", "MeterRecording.Infrastructure\MeterRecording.Infrastructure.csproj", "{DFF498BE-B734-40FE-8485-665A35BB7EE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeterRecording.Application", "MeterRecording.Application\MeterRecording.Application.csproj", "{80DD9A45-EB7C-4638-9150-863F828554F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DFF498BE-B734-40FE-8485-665A35BB7EE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFF498BE-B734-40FE-8485-665A35BB7EE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFF498BE-B734-40FE-8485-665A35BB7EE1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DD9A45-EB7C-4638-9150-863F828554F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DD9A45-EB7C-4638-9150-863F828554F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DD9A45-EB7C-4638-9150-863F828554F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DD9A45-EB7C-4638-9150-863F828554F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

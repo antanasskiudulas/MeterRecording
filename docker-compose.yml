@@ -8,6 +8,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
 
   postgreDb:
     image: postgres:13
@@ -16,8 +18,8 @@ services:
         POSTGRES_PASSWORD: guess
         POSTGRES_DB: energy_consumption
     volumes:
-      - energy-consumption:/var/lib/postgresql/data
+      - energy_consumption:/var/lib/postgresql/data
 
 volumes:
-    energy-consumption:
+    energy_consumption:
   
