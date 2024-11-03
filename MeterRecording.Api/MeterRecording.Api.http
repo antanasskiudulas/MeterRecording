@@ -1,6 +1,0 @@
-@MeterRecordingApi_HostAddress = http://localhost:32778
-
-GET {{MeterRecordingApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

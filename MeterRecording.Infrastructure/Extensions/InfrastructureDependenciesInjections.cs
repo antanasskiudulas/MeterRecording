@@ -1,5 +1,7 @@
-﻿using MeterRecording.Core.Interfaces.Repositories;
+﻿using MeterRecording.Core.Interfaces.Readers;
+using MeterRecording.Core.Interfaces.Repositories;
 using MeterRecording.Infrastructure.Data;
+using MeterRecording.Infrastructure.Readers;
 using MeterRecording.Infrastructure.Repositories;
 using MeterRecording.Infrastructure.Seed.Accounts;
 using MeterRecording.Infrastructure.Seed.Accounts.CSV;
@@ -10,9 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 namespace MeterRecording.Infrastructure.Extensions
 {
     /// <summary>
-    /// Extension methods for <see cref="IServiceCollection"/>
+    /// Extension methods for <see cref="IServiceCollection"/> to facilitate modular dependency injection
     /// </summary>
-    public static class ServiceCollectionExtensions
+    public static class InfrastructureDependenciesInjections
     {
         private const string DEV_CONNECTION_STRING_KEY = "EnergyConsumptionDatabase";
 
@@ -39,8 +41,10 @@ namespace MeterRecording.Infrastructure.Extensions
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
         {
             services.AddSingleton<IAccountRepository, AccountRepository>();
-            services.AddSingleton<IAccountReader, CsvAccountReader>();
+            services.AddSingleton<IMeterReadingRepository, MeterReadingRepository>();
+            services.AddSingleton<IAccountReader, AccountReader>();
             services.AddSingleton<ISeeder, AccountSeeder>();
+            services.AddSingleton<IMeterReader, CsvMeterReader>();
 
             return services;
         }

@@ -1,3 +1,4 @@
+using MeterRecording.Application.Extensions;
 using MeterRecording.Infrastructure.Data;
 using MeterRecording.Infrastructure.Extensions;
 using MeterRecording.Infrastructure.Seed.Accounts;
@@ -25,6 +26,7 @@ namespace MeterRecording.Api
             // Service bindings
             builder.Services.AddEnergyConsumptionDbConfiguration(builder.Configuration);
             builder.Services.AddInfrastructureServices();
+            builder.Services.AddApplicationServices();
 
             WebApplication app = builder.Build();
 

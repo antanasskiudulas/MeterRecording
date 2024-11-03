@@ -23,6 +23,12 @@ namespace MeterRecording.Infrastructure.Data
                 .HasForeignKey(m => m.AccountId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<MeterReading>()
+                .Property(x => x.ReadTime)
+                .HasConversion(
+                    w => DateTime.SpecifyKind(w, DateTimeKind.Utc),
+                    r => DateTime.SpecifyKind(r, DateTimeKind.Utc));
         }
     }
 }

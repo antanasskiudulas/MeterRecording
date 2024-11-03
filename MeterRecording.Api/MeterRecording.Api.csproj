@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MeterRecording.Application\MeterRecording.Application.csproj" />
     <ProjectReference Include="..\MeterRecording.Infrastructure\MeterRecording.Infrastructure.csproj" />
   </ItemGroup>
 

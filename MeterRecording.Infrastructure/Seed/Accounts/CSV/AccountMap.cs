@@ -4,7 +4,7 @@ using MeterRecording.Core.Entities;
 namespace MeterRecording.Infrastructure.Seed.Accounts.CSV
 {
     /// <summary>
-    /// Map class for <see cref="CsvAccountReader"/>
+    /// Map class for <see cref="AccountReader"/>
     /// </summary>
     public sealed class AccountMap : ClassMap<Account>
     {

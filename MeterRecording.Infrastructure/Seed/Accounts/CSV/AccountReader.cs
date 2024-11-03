@@ -6,7 +6,7 @@ using System.Globalization;
 namespace MeterRecording.Infrastructure.Seed.Accounts.CSV
 {
     /// <inheritdoc cref="IAccountReader"/>
-    public class CsvAccountReader : IAccountReader
+    public class AccountReader : IAccountReader
     {
         /// <inheritdoc/>
         public IEnumerable<Account> ReadAccounts(string location)

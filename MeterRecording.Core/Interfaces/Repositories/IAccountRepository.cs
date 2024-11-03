@@ -8,6 +8,12 @@ namespace MeterRecording.Core.Interfaces.Repositories
     public interface IAccountRepository
     {
         /// <summary>
+        /// Get all account IDs
+        /// </summary>
+        /// <param name="cancellationToken">Cancellation token</param>
+        Task<IEnumerable<int>> GetAllAccountIds(CancellationToken cancellationToken);
+
+        /// <summary>
         /// Insert a collection of accounts
         /// </summary>
         /// <param name="accounts">Collection of accounts to be inserted</param>

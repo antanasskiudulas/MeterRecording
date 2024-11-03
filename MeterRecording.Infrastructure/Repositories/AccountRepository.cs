@@ -16,6 +16,17 @@ namespace MeterRecording.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
+        public async Task<IEnumerable<int>> GetAllAccountIds(CancellationToken cancellationToken)
+        {
+            using (EnergyConsumptionContext context = await _contextFactory.CreateDbContextAsync())
+            {
+                return await context.Accounts
+                    .Select(x => x.Id)
+                    .ToListAsync(cancellationToken);
+            }
+        }
+
+        /// <inheritdoc/>
         public async Task InsertAccounts(IEnumerable<Account> accounts, CancellationToken cancellationToken)
         {
             using (EnergyConsumptionContext context = await _contextFactory.CreateDbContextAsync(cancellationToken))
