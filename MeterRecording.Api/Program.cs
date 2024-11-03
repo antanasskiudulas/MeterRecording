@@ -9,6 +9,7 @@ namespace MeterRecording.Api
     public class Program
     {
         private const string ACCOUNT_SEED_PATH_CFG_KEY = "AccountSeedPath";
+        private const string CLIENT_POLICY_NAME = "Client";
 
         public static async Task Main(string[] args)
         {
@@ -27,6 +28,16 @@ namespace MeterRecording.Api
             builder.Services.AddEnergyConsumptionDbConfiguration(builder.Configuration);
             builder.Services.AddInfrastructureServices();
             builder.Services.AddApplicationServices();
+
+            // Allow react front-end to make request from different origin
+            string origin = builder.Configuration.GetValue<string>(CLIENT_POLICY_NAME) ?? "http://localhost:3000";
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(CLIENT_POLICY_NAME, builder =>
+                    builder.WithOrigins(origin)
+                            .AllowAnyHeader()
+                            .AllowAnyMethod());
+            });
 
             WebApplication app = builder.Build();
 
@@ -52,7 +63,7 @@ namespace MeterRecording.Api
             }
 
             // Configure the HTTP request pipeline.
-            app.UseAuthorization();
+            app.UseCors(CLIENT_POLICY_NAME);
             app.MapControllers();
             app.Run();
         }

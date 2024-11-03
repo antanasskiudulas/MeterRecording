@@ -3,12 +3,12 @@ services:
     image: meterrecordingapi:dev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: MeterRecording.Api/Dockerfile
     ports:
       - "8080:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-
+      
   postgreDb:
     image: postgres:13
     environment:
@@ -17,6 +17,19 @@ services:
         POSTGRES_DB: energy_consumption
     volumes:
       - energy_consumption:/var/lib/postgresql/data
+      
+  client:
+    build:
+        context: ./meter-recording-client
+        dockerfile: Dockerfile
+        args:
+          - REACT_APP_API_URL=http://localhost:8080
+    ports:
+      - "3000:80"
+    depends_on:
+      - meterrecordingapi
+    environment:
+      REACT_APP_API_URL: http://localhost:8080
 
 volumes:
     energy_consumption:
