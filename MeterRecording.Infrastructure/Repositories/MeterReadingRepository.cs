@@ -1,6 +1,6 @@
 ﻿using MeterRecording.Core.Entities;
 using MeterRecording.Core.Interfaces.Repositories;
-using MeterRecording.Infrastructure.Data;
+using MeterRecording.Infrastructure.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace MeterRecording.Infrastructure.Repositories

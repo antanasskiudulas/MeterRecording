@@ -1,7 +1,7 @@
 ﻿using MeterRecording.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeterRecording.Infrastructure.Data
+namespace MeterRecording.Infrastructure.Database
 {
     /// <summary>
     /// Database context for energy consumption

@@ -1,5 +1,5 @@
 using MeterRecording.Application.Extensions;
-using MeterRecording.Infrastructure.Data;
+using MeterRecording.Infrastructure.Database;
 using MeterRecording.Infrastructure.Extensions;
 using MeterRecording.Infrastructure.Seed.Accounts;
 using Microsoft.EntityFrameworkCore;

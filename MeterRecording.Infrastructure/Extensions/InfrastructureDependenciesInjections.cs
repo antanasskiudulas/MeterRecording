@@ -1,6 +1,6 @@
 ﻿using MeterRecording.Core.Interfaces.Readers;
 using MeterRecording.Core.Interfaces.Repositories;
-using MeterRecording.Infrastructure.Data;
+using MeterRecording.Infrastructure.Database;
 using MeterRecording.Infrastructure.Readers;
 using MeterRecording.Infrastructure.Repositories;
 using MeterRecording.Infrastructure.Seed.Accounts;
@@ -23,12 +23,25 @@ namespace MeterRecording.Infrastructure.Extensions
         /// </summary>
         /// <param name="services">Services</param>
         /// <param name="configuration">Configuration</param>
-        public static IServiceCollection AddEnergyConsumptionDbConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddEnergyConsumptionDbConfiguration(
+            this IServiceCollection services,
+            IConfiguration configuration,
+            bool isProduction = false)
         {
-            services.AddDbContextFactory<EnergyConsumptionContext>(options =>
-                options.UseNpgsql(
-                    configuration.GetConnectionString(DEV_CONNECTION_STRING_KEY),
-                    b => b.MigrationsAssembly(typeof(EnergyConsumptionContext).Assembly.FullName)));
+            if (isProduction)
+            {
+                services.AddDbContextFactory<EnergyConsumptionContext>(options =>
+                    options.UseNpgsql(
+                        configuration.GetConnectionString(DEV_CONNECTION_STRING_KEY),
+                        b => b.MigrationsAssembly(typeof(EnergyConsumptionContext).Assembly.FullName)));
+            }
+            else
+            {
+                services.AddDbContextFactory<EnergyConsumptionContext>(options =>
+                    options.UseSqlite(
+                        configuration.GetConnectionString(DEV_CONNECTION_STRING_KEY),
+                        b => b.MigrationsAssembly(typeof(EnergyConsumptionContext).Assembly.FullName)));
+            }
 
             return services;
         }
