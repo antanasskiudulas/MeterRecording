@@ -17,4 +17,5 @@ This mode uses PostgreSQL as the database.
 1. Ensure that Docker Desktop is installed on your machine.
 2. Run the following command to start the app:
    ```powershell
-   docker-compose up --build --force-recreate
+   docker-compose up --build --force-recreate```
+3. You can then access the upload client at: http://localhost:3000
