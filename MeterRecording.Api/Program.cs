@@ -25,7 +25,9 @@ namespace MeterRecording.Api
             builder.Services.AddControllers();
 
             // Service bindings
-            builder.Services.AddEnergyConsumptionDbConfiguration(builder.Configuration);
+            builder.Services.AddEnergyConsumptionDbConfiguration(
+                builder.Configuration,
+                builder.Environment.IsProduction());
             builder.Services.AddInfrastructureServices();
             builder.Services.AddApplicationServices();
 
